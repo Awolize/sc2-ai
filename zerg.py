@@ -20,8 +20,6 @@ class IncrediBot(BotAI): # inhereits from BotAI (part of BurnySC2)
         # begin logic:
         await self.distribute_workers() # put idle workers back to work
 
-
-
         if self.townhalls:
             if self.can_afford(UnitTypeId.DRONE) and self.supply_workers < self.townhalls.amount * 18:  
                 for loop_larva in self.larva:
