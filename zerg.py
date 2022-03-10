@@ -24,9 +24,11 @@ class IncrediBot(BotAI): # inhereits from BotAI (part of BurnySC2)
 
         if self.townhalls:
             if self.can_afford(UnitTypeId.DRONE) and self.supply_workers < self.townhalls.amount * 18:  
-                for townhall in self.townhalls:
-                    if townhall.is_idle:
-                        townhall.train(UnitTypeId.DRONE)
+                for loop_larva in self.larva:
+                    if self.can_afford(UnitTypeId.DRONE) and self.supply_workers < self.townhalls.amount * 18:
+                        loop_larva.train(UnitTypeId.DRONE)
+                    else:
+                        break # Can't afford drones anymore
 
             if self.can_afford(UnitTypeId.HATCHERY) and (self.workers.amount > (14*self.structures(UnitTypeId.HATCHERY).amount)) and self.already_pending(UnitTypeId.HATCHERY) == 0:
                 await self.expand_now()
